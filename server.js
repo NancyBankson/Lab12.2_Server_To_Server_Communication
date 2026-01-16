@@ -9,10 +9,9 @@ app.get('/api/fun-fact', async (req, res) => {
     try {
         const response = await apiClient.get('/facts/random');
         const randomFactData = response.data;
+
         // Transform the data
-        const randomFact = randomFactData.map(data => ({
-            fact: data.text
-        }));
+        const randomFact = { fact: randomFactData.text }
 
         res.json(randomFact);
     } catch (error) {
